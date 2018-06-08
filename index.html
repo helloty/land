@@ -39,15 +39,26 @@
     <section class="hero">
         <div class="container">
             <div class="row nav-wrapper">
-                <div class="col-md-6 col-sm-6 col-xs-6 text-left" style="font-size: 20px">
-                    土地流转查询工具
+                <div class="col-md-12 col-sm-12 col-xs-12 text-left" style="font-size: 16px">
+                    <!--土地流转查询工具-->
+                    <div class="menu-wrap" style="display: flex;justify-content: flex-end">
+                        <div class="menu">
+                            <a href="javascript:void(0)" onclick="addRecord()">添加</a>
+                        </div>
+                        <div class="menu">
+                            <a href="javascript:void(0)" onclick="about()">about</a>
+                        </div>
+                        <div class="menu">
+                            <a href="https://github.com/nebulasio" target="_blank">github</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="row hero-content">
-                <div class="col-md-12 text-center" style="padding-top: 150px">
-                    <h2 class="animated fadeInDown">基于新一代区块链公链星云链的土地流转查询系统</h2>
-                    <a href="#features" class="read-btn animated fadeInUp">查询</a>
+                <div class="col-md-12 text-center" style="padding-top: 0px">
+                    <h1 class="animated fadeInDown">基于星云链的土地流转查询系统</h1>
+                    <!--<a href="#features" class="read-btn animated fadeInUp">查询</a>-->
 
                     <h1 id="noExtension" style="display: none">请安装
                         <a target="_blank"
@@ -57,59 +68,19 @@
         </div>
     </section>
 </header>
-<section class="services-list page-section" id="features">
-    <div class="container">
-        <div class="row">
-            <div class="title-section text-center">
-                <h2>系统介绍</h2>
-            </div>
-            <div class="disc-section text-center">
-                <p>基于新一代区块链公链星云链，更加方便快捷安全的供应查询系统</p>
-            </div>
-            <div class="col-md-12">
-
-                <div class="col-md-4 feature-2 wp2 delay-05s">
-                    <div class="feature-icon">
-                        <img class="gn-icon" src="img/1gn.png">
-                    </div>
-                    <div class="feature-content">
-                        <h1>可溯源</h1>
-                        <p>从供应商到消费者终端，保障商品质量，防伪</p>
-                    </div>
-                </div>
-                <div class="col-md-4 feature-3 wp2 delay-1s">
-                    <div class="feature-icon">
-                        <img class="gn-icon" src="img/2gn.png">
-                    </div>
-                    <div class="feature-content">
-                        <h1>不可篡改</h1>
-                        <p>一旦记录，永久不可篡改，基于新一代区块链公链星云链</p>
-                    </div>
-                </div>
-                <div class="col-md-4 feature-1 wp2">
-                    <div class="feature-icon">
-                        <img class="gn-icon" src="img/3gn.png">
-                    </div>
-                    <div class="feature-content">
-                        <h1>公开透明</h1>
-                        <p>任何人可通过该网站查询商品供应链信息，保证每个环节公开透明</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
 <section id="about" class="aboutUs page-section">
     <div class="aboutUs-wrap">
         <div class="title-section text-center wp2">
-            <h2 style="color: #1E9FFF">供应链信息查询</h2>
+            <h2 style="color: #1E9FFF">土地流转记录查询</h2>
             <br>
         </div>
         <div class="container">
             <div class="row">
-                <input type="text" name="name" id="search_value" required="required" class="form wp2"
-                       placeholder="请填写商品编号(例如:ABCD123456)">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                    <input type="text" name="name" id="search_value" required="required" class="form wp2"
+                           placeholder="请填写土地编号(例如:abcdef123456)">
+                </div>
                 <div class="relative fullwidth col-xs-12">
                     <!-- Send Button -->
                     <button id="search" name="submit" class="form-btn semibold wp2">查询</button>
@@ -119,19 +90,21 @@
                 <table id="tableList" class="table table-bordered" style="display:none;margin-top: 30px">
                     <thead>
                     <tr>
-                        <th>供应环节</th>
+                        <th>交易时间</th>
+                        <th>拥有者编号</th>
+                        <th>拥有者</th>
+                        <th>转给谁</th>
                         <th>地址</th>
-                        <th>服务商编号</th>
-                        <th>日期</th>
                         <th>备注</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="l in list">
-                        <td v-html="l.link"></td>
-                        <td v-html="l.value"></td>
-                        <td v-html="l.serverNo"></td>
                         <td v-html="l.date"></td>
+                        <td v-html="l.orderNo"></td>
+                        <td v-html="l.username"></td>
+                        <td v-html="l.toname"></td>
+                        <td v-html="l.addr"></td>
                         <td v-html="l.remark"></td>
                     </tr>
                     </tbody>
@@ -140,29 +113,72 @@
         </div>
     </div>
 </section>
-<section id="contact" class="container page-section">
-    <!-- Contact Inner -->
-    <div class="inner contact wp2 delay-05s">
-        <div class="title-section text-center">
-            <h2>供应链信息录入</h2>
+<section class="services-list page-section" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="title-section text-center">
+                <h2>系统特点</h2>
+            </div>
+            <div class="disc-section text-center">
+                <p>基于新一代区块链公链星云链，更加方便快捷清晰的土地流转查询系统</p>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4 feature-3 wp2 delay-1s">
+                    <div class="feature-icon">
+                        <img class="gn-icon" src="img/2gn.png">
+                    </div>
+                    <div class="feature-content">
+                        <h1>不可篡改</h1>
+                        <p>一旦记录，永久不可篡改，保证数据可信度</p>
+                    </div>
+                </div>
+                <div class="col-md-4 feature-1 wp2">
+                    <div class="feature-icon">
+                        <img class="gn-icon" src="img/3gn.png">
+                    </div>
+                    <div class="feature-content">
+                        <h1>公开透明</h1>
+                        <p>任何人可通过该网站查询到土地流转信息保证公开透明</p>
+                    </div>
+                </div>
+                <div class="col-md-4 feature-2 wp2 delay-05s">
+                    <div class="feature-icon">
+                        <img class="gn-icon" src="img/1gn.png">
+                    </div>
+                    <div class="feature-content">
+                        <h1>可溯源</h1>
+                        <p>可清晰的查到每个流转交易详情，保证真实可靠</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
+
+<section id="contact" class="container page-section" style="display: none;">
+    <!-- Contact Inner -->
+    <div class="inner contact">
         <!-- Form Area -->
         <div class="contact-form">
-            <div class="col-xs-12 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="400">
-                <input type="text" id="projectId" class="form" placeholder="商品编号">
+            <br>
+            <div class="col-xs-12 visible">
+                <input type="text" id="projectId" class="form" placeholder="土地编号" autocomplete="off">
             </div>
-            <div class="col-xs-12 animated fadeInRight visible" data-animation="fadeInRight" data-animation-delay="400">
-                <input type="text" id="addr" class="form" placeholder="地址">
+            <div class="col-xs-12 visible">
+                <input type="text" id="username" class="form" placeholder="拥有者" autocomplete="off">
             </div>
-            <div class="col-xs-12 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300">
-                <input type="text" id="link" class="form" placeholder="供应环节">
+            <div class="col-xs-12 visible">
+                <input type="text" id="toname" class="form" placeholder="转给谁" autocomplete="off">
             </div>
-            <div class="col-xs-12 animated fadeInLeft visible" data-animation="fadeInLeft" data-animation-delay="300">
-                <input type="text" id="remark" class="form" placeholder="备注">
+            <div class="col-xs-12 visible">
+                <input type="text" id="addr" class="form" placeholder="所在区域" autocomplete="off">
+            </div>
+            <div class="col-xs-12 visible">
+                <input type="text" id="remark" class="form" placeholder="备注" autocomplete="off">
             </div>
             <div class="relative fullwidth col-xs-12">
                 <!-- Send Button -->
-                <button id="push" name="submit" class="form-btn semibold">提交</button>
+                <button id="push" onclick="push()" name="submit" class="form-btn semibold">提交</button>
             </div>
             <!-- End Bottom Submit -->
             <!-- Clear -->
@@ -178,7 +194,7 @@
         <div class="site-socials inner no-padding">
 
             <!-- Adress, Mail -->
-            <div class="address socials animated fadeInRight visible" data-animation="fadeInRight"
+            <div class="address socials visible" data-animation="fadeInRight"
                  data-animation-delay="500">
                 <!-- Phone Number, Mail -->
                 <p>Copyright &copy; 2018.基于新一代区块链公链
@@ -201,121 +217,145 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="js/layer/layer.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    $(function () {
-        var NebPay = require("nebpay");
-        var nebPay = new NebPay();
+    var NebPay = require("nebpay");
+    var nebPay = new NebPay();
 
-        var dappAddress = "n1zWCNCHrXyDY8z5eLyu7rFbWMpZwnYrk4M";
-        //检查扩展是否已安装
-        //如果安装了扩展，var“webExtensionWallet”将被注入到web页面中1
-        setTimeout(function () {
-            if (typeof (webExtensionWallet) === "undefined") {
-                //alert ("扩展钱包未安装，请先安装.")
-                $("#noExtension").show();
-            }
-        }, 500);
-
-
-        $("#search").click(function () {
-            var search_value = $("#search_value").val();
-            if (search_value == '') {
-                search_value = 'ABCD123456'
-            }
-            var to = dappAddress;
-            var value = "0";
-            var callFunction = "get";
-            var callArgs = [];
-            callArgs.push(search_value);
-            nebPay.simulateCall(to, value, callFunction, JSON.stringify(callArgs), {
-                listener: cbSearch
-            });
-        })
-
-        function cbSearch(resp) {
-            var result = resp.result
-            if (result === 'null') {
-                layer.msg('没有查到商品供应链信息');
-            } else {
-                $('#tableList').show();
-                var resultObj = JSON.parse(result);
-                var len = resultObj.value.split('|-').length;
-                var obj = [];
-                for (var i = 0; i < len; i++) {
-                    var temp = {
-                        link: resultObj.link.split('|-')[i],
-                        value: resultObj.value.split('|-')[i],
-                        serverNo: resultObj.author.split('|-')[i],
-                        date: resultObj.date.split('|-')[i],
-                        remark: resultObj.remark.split('|-')[i],
-                    }
-                    obj.push(temp);
-                }
-                Vue.set(app, 'list', obj)
-            }
-
+    var dappAddress = "n1i7uy9WhHgNUvaTdMozhDpU5JZJQ1Biosp";
+    //检查扩展是否已安装
+    //如果安装了扩展，var“webExtensionWallet”将被注入到web页面中1
+    setTimeout(function () {
+        if (typeof (webExtensionWallet) === "undefined") {
+            //alert ("扩展钱包未安装，请先安装.")
+            $("#noExtension").show();
         }
+    }, 500);
 
-        $("#push").click(function () {
-            var projectId = $('#projectId').val();
-            var addr = $('#addr').val();
-            var link = $('#link').val();
-            var remark = $('#remark').val();
-            if (projectId == '') {
-                layer.msg('商品编号不能为空');
-                return;
-            } else if (addr == '') {
-                layer.msg('地址不能为空');
-                return;
-            } else if (link == '') {
-                layer.msg('供应环节不能为空');
-                return;
-            }
-            var to = dappAddress;
-            var value = "0";
-            var callFunction = "save"
-            var callArgs = [];
-            callArgs.push(projectId);
-            callArgs.push(addr);
-            callArgs.push(link);
-            callArgs.push(new Date().format("yyyy-MM-dd hh:mm:ss"));
-            callArgs.push(remark);
-            nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
-                listener: cbPush
-            });
-        });
 
-        function cbPush(resp) {
-            console.log("response of push: " + resp)
+    $("#search").click(function () {
+        var search_value = $("#search_value").val();
+        if (search_value == '') {
+            search_value = 'abcdef123456'
         }
-
-        var app = new Vue({
-            el: '#app',
-            data: {
-                list: []
-            }
+        var to = dappAddress;
+        var value = "0";
+        var callFunction = "get";
+        var callArgs = [];
+        callArgs.push(search_value);
+        nebPay.simulateCall(to, value, callFunction, JSON.stringify(callArgs), {
+            listener: cbSearch
         });
-
-
-        Date.prototype.format = function (format) {
-            var args = {
-                "M+": this.getMonth() + 1,
-                "d+": this.getDate(),
-                "h+": this.getHours(),
-                "m+": this.getMinutes(),
-                "s+": this.getSeconds(),
-                "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
-                "S": this.getMilliseconds()
-            };
-            if (/(y+)/.test(format))
-                format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-            for (var i in args) {
-                var n = args[i];
-                if (new RegExp("(" + i + ")").test(format))
-                    format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
-            }
-            return format;
-        };
     })
+
+    function cbSearch(resp) {
+        var result = resp.result
+        if (result === 'null') {
+            layer.msg('没有查到土地信息');
+        } else {
+            $('#tableList').show();
+            var resultObj = JSON.parse(result);
+            var len = resultObj.username.split('|-').length;
+            var obj = [];
+            for (var i = 0; i < len; i++) {
+                var temp = {
+                    username: resultObj.username.split('|-')[i],
+                    toname: resultObj.toname.split('|-')[i],
+                    orderNo: resultObj.author.split('|-')[i],
+                    date: resultObj.date.split('|-')[i],
+                    addr: resultObj.addr.split('|-')[i],
+                    remark: resultObj.remark.split('|-')[i],
+                }
+                obj.push(temp);
+            }
+            Vue.set(app, 'list', obj)
+        }
+
+    }
+
+    function push() {
+        console.log(1);
+        var projectId = $('#projectId').val();
+        var username = $('#username').val();
+        var toname = $('#toname').val();
+        var addr = $('#addr').val();
+        var remark = $('#remark').val();
+        if (projectId == '') {
+            layer.msg('土地编号不能为空');
+            return;
+        } else if (username == '') {
+            layer.msg('拥有者不能为空');
+            return;
+        } else if (toname == '') {
+            layer.msg('转给谁不能为空');
+            return;
+        } else if (addr == '') {
+            layer.msg('地址不能为空');
+            return;
+        }
+        var to = dappAddress;
+        var value = "0";
+        var callFunction = "save"
+        var callArgs = [];
+        callArgs.push(projectId);
+        callArgs.push(username);
+        callArgs.push(toname);
+        callArgs.push(addr);
+        callArgs.push(new Date().format("yyyy-MM-dd hh:mm:ss"));
+        callArgs.push(remark);
+        nebPay.call(to, value, callFunction, JSON.stringify(callArgs), {
+            listener: cbPush
+        });
+    }
+
+    function cbPush(resp) {
+        console.log("response of push: " + resp)
+        //layer.closeAll();
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list: []
+        }
+    });
+
+
+    Date.prototype.format = function (format) {
+        var args = {
+            "M+": this.getMonth() + 1,
+            "d+": this.getDate(),
+            "h+": this.getHours(),
+            "m+": this.getMinutes(),
+            "s+": this.getSeconds(),
+            "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+            "S": this.getMilliseconds()
+        };
+        if (/(y+)/.test(format))
+            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var i in args) {
+            var n = args[i];
+            if (new RegExp("(" + i + ")").test(format))
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+        }
+        return format;
+    };
+
+    function about() {
+        layer.alert('基于星云链的土地流转查询系统。致力于构建公开透明可信的查询系统<br>当前版本：1.0.1<br/>作者：我是萝卜', {
+            skin: 'layer-ext-moon',
+            title: '关于我们'
+        })
+    }
+
+    var content_html = $('#contact').html();
+    $('#contact').remove();
+
+    function addRecord() {
+        layer.open({
+            type: 1,
+            area: ['520px', '540px'], //宽高
+            content: content_html
+        });
+    }
 </script>
 </body>
 
